@@ -1,0 +1,49 @@
+/* You need to create the rest of styles for the layout shown */
+.choices{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.options {
+    flex-basis: 24%;
+    margin: 0 2rem;
+    border: 1px dashed dodgerblue;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
+}
+.choices__types{
+    margin-top: 1em;
+    border: none;
+    
+    box-shadow: none;
+}
+.choices__types ul {
+    display: flex;
+}
+
+.orderGen{
+    margin: 0 2rem;
+    border: 1px dashed rgb(121, 187, 212);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
+    width: 40em;
+}
+#orderGenTotal{
+    color: green;
+}
+@media screen and (max-width: 1065px) {
+    .choices{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .options{
+        margin-top: .5em;
+    }
+    .orderGen{
+        width: 80%;
+    }
+    
+}
