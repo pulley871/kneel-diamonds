@@ -1,32 +1,8 @@
-import { getMetals, getOrders, getSizes, getStyles, getTypes } from "./dataAccess.js"
-
+import { getOrders} from "./dataAccess.js"
+import { orderedMetal, orderedSize, orderedStyle, orderedType} from "./foundOrderDetails.js";
 const buildOrderListItem = (order) => {
-    const metals = getMetals();
-    const styles = getStyles();
-    const diamondSize = getSizes();
-    const types = getTypes();
-    const foundMetal = metals.find(
-        (metal) =>{
-            return metal.id === order.metalId
-        }
-    )
-    const foundStyle = styles.find(
-        (style) =>{
-            return style.id === order.styleId
-        }
-    )
-    const foundDiamondSize = diamondSize.find(
-        (size) =>{
-            return size.id === order.sizeId
-        }
-    )
-    const foundType = types.find(
-        (type) =>{
-            return type.id === order.typeId
-        }
-    )
     let typeMultiplier;
-    switch (foundType.id){
+    switch (orderedType(order).id){
         case 1:
             typeMultiplier = 1.0
             break;
@@ -36,7 +12,7 @@ const buildOrderListItem = (order) => {
         case 3:
             typeMultiplier = 4.0
     }
-    let totalCost = (foundMetal.price + foundStyle.price + foundDiamondSize.price) * typeMultiplier ;
+    let totalCost = (orderedMetal(order).price + orderedStyle(order).price + orderedSize(order).price) * typeMultiplier ;
     let totalCostString = totalCost.toFixed(2).toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
